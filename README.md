@@ -10,3 +10,11 @@ ResNet and regression are combined to create a powerful model to solve age estim
 ## Diagram of the method chosen 
 ![alt-text](https://github.com/KhaingNaing/Age_estimation_CV/raw/main/pics/ResNet.png)
 
+# Step 3: Implementation
+
+## Dataset 
+The dataset can be found [here](https://drive.google.com/file/d/1uNA2JzKTtTaGIWtrHsrBUAg2k3eoDZHA/view?usp=drive_link). It contains facial images of people aged between 20 and 50 years. Each folder is named according to the age group it represents.
+
+### 1. Exploratory Data Analysis (EDA)
+
+
