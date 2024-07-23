@@ -48,8 +48,13 @@ Stratified sampling works by dividing the dataset into groups based on the strat
 <details>
   <summary><b>Distribution Plots for Train, Val and Test sets</b></summary><br/>
 
+![alt-text](figs/train_test_valid_age_distri.png)
 
+We can see that train, test and valid sets have similar age distribution, which indicates a balanced and representative dataset split.
 </details>
+
+### 3. Preprocessing and Transformation 
+I have defined data preprocessing and transformations in custom_dataset.py, which include denoising, deblurring, image resizing, converting images to tensors, and normalizing pixel values.
 
 ### Improvement 
 ResNet and regression are combined to create a powerful model to solve age estimation from facial images. [Residual Network(ResNet)](https://huggingface.co/docs/transformers/en/model_doc/resnet) is a deep learning model designed to help deep neural networks learn effectively and improve accuracy across various computer vision tasks. By utilizing ResNet, we can effectively capture intricate patterns and features in images, which is crucial for precise age estimation. The regression part of the model predicts the numerical age based on the features extracted by ResNet. This approach leverages the strengths of ResNet with regression to create a robust age estimation model capable of handling complex variations.
