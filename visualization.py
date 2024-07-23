@@ -30,7 +30,7 @@ def save_blurry_sharp_pics(dataset_path, blurry_images, sharp_images):
     sharp_file = "/home/norakami/age-prediction/pics/sharp_images.png"
     show_random_images(dataset_path, sharp_file, image_details=sharp_images)
 
-# Function to show 5 blurry and sharp images
+# Function to show 5 blurry and sharp images (plot image by image detail)
 def show_blurry_sharp_pics(dataset_path, blurry_images, sharp_images, samples=5):
     fig, ax = plt.subplots(2, 5, figsize=(10, 5))
     for i in range(samples):
@@ -44,6 +44,19 @@ def show_blurry_sharp_pics(dataset_path, blurry_images, sharp_images, samples=5)
         ax[1, i].imshow(sharp_image)
         ax[1, i].axis('off')
         ax[1, i].set_title("Sharp")
+    plt.tight_layout()
+    plt.show()
+
+# Function to show 5 side by side images (plot image by image tensor)
+def side_by_side_images(image1s, image2s, title1, title2, samples=5):
+    fig, ax = plt.subplots(2, samples, figsize=(10, 5))
+    for i in range(samples):
+        ax[0, i].imshow(image1s[i])
+        ax[0, i].axis('off')
+        ax[0, i].set_title(title1)
+        ax[1, i].imshow(image2s[i])
+        ax[1, i].axis('off')
+        ax[1, i].set_title(title2)
     plt.tight_layout()
     plt.show()
     

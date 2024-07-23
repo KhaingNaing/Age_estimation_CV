@@ -8,7 +8,7 @@ The problem asks for the implementation of a deep learning model that can estima
 A combination of a Convolutional Neural Network (CNN) and regression is used to create an age estimation model. The simplified CNN architecture is designed for efficient deployment on mobile devices. By utilizing this compact CNN model, we ensure that the model remains computationally feasible while still capturing essential features from the images. The regression component then predicts the numerical age based on the features extracted by the CNN. This approach leverages the strengths of both a compact CNN and regression to develop a straightforward yet effective age estimation model.
 
 ## Diagram of the method chosen 
-![alt-text](https://github.com/KhaingNaing/Age_estimation_CV/raw/main/pics/Model-diagram.png)
+![alt-text](pics/Model_diagram.png)
 
 # Step 3: Implementation
 
@@ -16,7 +16,40 @@ A combination of a Convolutional Neural Network (CNN) and regression is used to 
 The dataset can be found [here](https://drive.google.com/file/d/1uNA2JzKTtTaGIWtrHsrBUAg2k3eoDZHA/view?usp=drive_link). It contains facial images of people aged between 20 and 50 years. Each folder is named according to the age group it represents.
 
 ### 1. Exploratory Data Analysis (EDA)
+This repository contains code for exploratory data analysis on a dataset of facial images categorized by age.
 
+<details>
+  <summary><b>1. Display sample images</b></summary><br/>
+
+![alt-text](pics/sample_images.png)
+
+</details>
+
+<details>
+  <summary><b>2. Create a CSV File with Labels</b></summary><br/>
+
+![alt-text](pics/df_head.png)
+</details>
+<details>
+  <summary><b>3. Age Distribution Analysis</b></summary><br/>
+
+![alt-text](figs/age_distribution.png)
+</details>
+
+### 2. Dataset Splitting 
+In the age distribution analysis, the dataset is imbalanced. To address this, it is better to use stratified sampling to account for the imbalance in the age feature.
+
+<details>
+  <summary><b>Stratified Sampling</b></summary><br/>
+
+Stratified sampling works by dividing the dataset into groups based on the stratification feature (in our case, age). This approach ensures that each group is represented proportionally, which helps address imbalances in the dataset and improves the quality of the analysis.
+</details>
+
+<details>
+  <summary><b>Distribution Plots for Train, Val and Test sets</b></summary><br/>
+
+
+</details>
 
 ### Improvement 
 ResNet and regression are combined to create a powerful model to solve age estimation from facial images. [Residual Network(ResNet)](https://huggingface.co/docs/transformers/en/model_doc/resnet) is a deep learning model designed to help deep neural networks learn effectively and improve accuracy across various computer vision tasks. By utilizing ResNet, we can effectively capture intricate patterns and features in images, which is crucial for precise age estimation. The regression part of the model predicts the numerical age based on the features extracted by ResNet. This approach leverages the strengths of ResNet with regression to create a robust age estimation model capable of handling complex variations.

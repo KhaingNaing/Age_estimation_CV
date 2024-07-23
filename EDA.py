@@ -3,6 +3,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
+from config import config
+
 # Plot the distribution of the age values
 def plot_age_distribution(df, save_path=None):
     # Set style and palette
@@ -36,32 +38,12 @@ def get_age_count_table(df, save_path="/home/norakami/age-prediction/csv_dataset
     age_counts.to_csv(save_path, index=False)
     print("Age count table saved to age_count_table.csv")
 
-
-# Create datagenerator obj to load images, this can avoid loading all images at once and save memory
-def create_datagenerator(df, dest_folder, batch_size=32, target_size=(224, 224), class_mode="raw"):
-    datagen = ImageDataGenerator(
-        # image rescaling (normalizes the pixel values to be between 0 and 1)
-        rescale=1./255
-    )
-
-    train_generator = datagen.flow_from_dataframe(
-        dataframe=df,
-        directory=dest_folder,
-        x_col="image_id",
-        y_col="age",
-        target_size=target_size,
-        batch_size=batch_size,
-        class_mode=class_mode,
-        seed=42
-    )
-
-    return train_generator
-
 if __name__ == "__main__":
-    fig_save_path = "/home/norakami/age-prediction/figs/age_distribution.png"
-    df = pd.read_csv("/home/norakami/age-prediction/csv_dataset/age_dataset.csv")
+    fig_save_path = "/home/norakami/age-prediction/figs"
+    csv_path = config["csv_path"]
 
-    get_age_count_table(df)
-    plot_age_distribution(df, fig_save_path)
+    for file in ["train_set.csv", "valid_set.csv", "test_set.csv"]:
+        df = pd.read_csv(f"{csv_path}/{file}")
+        plot_age_distribution(df, f"{fig_save_path}/{file.split('.')[0]}_age_distribution.png")
 
 
