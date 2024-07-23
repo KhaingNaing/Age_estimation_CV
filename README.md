@@ -8,4 +8,5 @@ The problem asks for the implementation of a deep learning model that can estima
 ResNet and regression are combined to create a powerful model to solve age estimation from facial images. [Residual Network(ResNet)](https://huggingface.co/docs/transformers/en/model_doc/resnet) is a deep learning model designed to help deep neural networks learn effectively and improve accuracy across various computer vision tasks. By utilizing ResNet, we can effectively capture intricate patterns and features in images, which is crucial for precise age estimation. The regression part of the model predicts the numerical age based on the features extracted by ResNet. This approach leverages the strengths of ResNet with regression to create a robust age estimation model capable of handling complex variations.
 
 ## Diagram of the method chosen 
+![alt-text](https://github.com/KhaingNaing/Age_estimation_CV/tree/main/pics/ResNet.png)
 
