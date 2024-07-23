@@ -9,6 +9,6 @@ ResNet and regression are combined to create a powerful model to solve age estim
 
 ## Diagram of the method chosen 
 <p align="center">
-<img src="https://github.com/KhaingNaing/Age_estimation_CV/tree/main/pics/ResNet.png" alt="my banner">
+<img src="https://github.com/KhaingNaing/Age_estimation_CV/raw/main/pics/ResNet.png" alt="my banner">
 </p>
 
