@@ -8,7 +8,7 @@ The problem asks for the implementation of a deep learning model that can estima
 A combination of a Convolutional Neural Network (CNN) and regression is used to create an age estimation model. The simplified CNN architecture is designed for efficient deployment on mobile devices. By utilizing this compact CNN model, we ensure that the model remains computationally feasible while still capturing essential features from the images. The regression component then predicts the numerical age based on the features extracted by the CNN. This approach leverages the strengths of both a compact CNN and regression to develop a straightforward yet effective age estimation model.
 
 ## Diagram of the method chosen 
-![alt-text](https://github.com/KhaingNaing/Age_estimation_CV/raw/main/pics/ResNet.png)
+![alt-text](https://github.com/KhaingNaing/Age_estimation_CV/raw/main/pics/Model-diagram.png)
 
 # Step 3: Implementation
 
