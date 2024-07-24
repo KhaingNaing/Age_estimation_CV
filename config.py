@@ -13,7 +13,7 @@ config = {
     # 'image_path_test': '/home/deep/projects/Mousavi/Facial_Age_estimation_PyTorch/img_test/30_1_2.jpg',
     # 'output_path_test': '/home/deep/projects/Mousavi/Facial_Age_estimation_PyTorch/img_test/output.jpg',
     'leaky_relu': False,
-    'epochs': 10,
+    'epochs': 20,
     'batch_size': 64,
     'eval_batch_size': 128,
     'seed': 42,
