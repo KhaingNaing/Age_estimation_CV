@@ -156,7 +156,25 @@ The inference function is defined in `inference.py`. This function takes a pre-t
 </details>
 
 
-### Improvement 
+### Future Improvement 
 ResNet and regression are combined to create a powerful model to solve age estimation from facial images. [Residual Network(ResNet)](https://huggingface.co/docs/transformers/en/model_doc/resnet) is a deep learning model designed to help deep neural networks learn effectively and improve accuracy across various computer vision tasks. By utilizing ResNet, we can effectively capture intricate patterns and features in images, which is crucial for precise age estimation. The regression part of the model predicts the numerical age based on the features extracted by ResNet. This approach leverages the strengths of ResNet with regression to create a robust age estimation model capable of handling complex variations.
+
+# Steps to Run the Code:
+  1. Create a conda env with python 3.8 via:\
+    - ```conda create --name age_estimation python=3.8```
+  2. Activate conda env:\
+    - ```conda activate age_estimation```
+  3. Make sure to install all the requirements: \
+    - ```conda install --file requirements.txt```
+  4. Prepare the dataset: \
+    - Download dataset [here](https://drive.google.com/file/d/1uNA2JzKTtTaGIWtrHsrBUAg2k3eoDZHA/view?usp=drive_link)
+  5. Adjust the configuration: \
+    - Edit ```config.py``` to set the dataset path and configure other features as needed. 
+  6. Train the simple_cnn model: \
+    - ```python3 train.py```
+  7. Perform inference with the best model checkpoint in ```checkpoints/``` directory: \
+    - ```python3 inference.py```
+
+
 
 
