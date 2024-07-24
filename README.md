@@ -157,7 +157,35 @@ The inference function is defined in `inference.py`. This function takes a pre-t
 
 
 ### Future Improvement 
-ResNet and regression are combined to create a powerful model to solve age estimation from facial images. [Residual Network(ResNet)](https://huggingface.co/docs/transformers/en/model_doc/resnet) is a deep learning model designed to help deep neural networks learn effectively and improve accuracy across various computer vision tasks. By utilizing ResNet, we can effectively capture intricate patterns and features in images, which is crucial for precise age estimation. The regression part of the model predicts the numerical age based on the features extracted by ResNet. This approach leverages the strengths of ResNet with regression to create a robust age estimation model capable of handling complex variations.
+<details>
+  <summary><b>Model</b></summary><br />
+
+To enhance model's capability in capturing complex facial features we can implement very deep architectures, such as [Residual Network(ResNet)](https://huggingface.co/docs/transformers/en/model_doc/resnet). By utilizing deeper models, we can enhance the model's ability in capturing intricate patterns in facial images, leading to more accurate predictions.
+
+</details>
+
+<details>
+  <summary><b>Data Transformation</b></summary><br />
+
+In the current data preprocessing solution, in addition to standard data transformations such as resizing and normalization, denoising or smoothing techniques are applied. These techniques help the model to generalize better by focusing on larger patterns rather than fine details, which might be noise.
+
+One potential improvement in data cleaning is to experiment with image sharpening techniques. Sharpening can enhance edges and details, potentially providing the model with more informative features to learn from. 
+
+</details>
+
+<details>
+  <summary><b>Data Augmentation</b></summary><br />
+
+Data augmentation techniques, such as random cropping, rotation, scaling, flipping, and color jittering, can help create a more diverse training set. These techniques improve the model's ability to generalize to new, unseen data.
+
+</details>
+
+<details>
+  <summary><b>Advanced Loss Function</b></summary><br />
+
+Experiment with advanced loss functions tailored to regression tasks, which might provide better performance compared to the L1 Loss (Mean Absolute Error) currently used in training.
+
+</details>
 
 # Steps to Run the Code:
   1. Create a conda env with python 3.8 via:\

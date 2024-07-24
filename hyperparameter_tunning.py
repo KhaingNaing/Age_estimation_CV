@@ -32,6 +32,7 @@ def calculate_small_train_loss(model, train_set, loss_fn, optimizer, num_epochs=
                                             loss_fn, 
                                             metric)
         print(f"    Epoch {epoch+1}, Loss: {train_loss}, Metric: {train_metric}")
+    # [final_loss] Epoch 20, Loss: 6.098835245768229, Metric: 6.098839282989502
 
 ## 2. Train the model for a few epochs on the full dataset (experiemtn with different hyperparameters)
 def find_best_lr(num_epochs=20):
