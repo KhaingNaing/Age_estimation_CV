@@ -61,7 +61,7 @@ def find_best_lr(num_epochs=20):
         print("\n")
 
 ## 3. Create a grid using weight decay and the best lr 
-def find_best_lr_wd_pair(num_epochs=25):
+def find_best_lr_wd_pair(num_epochs=30):
     print(f"3. Create a grid using weight decay and the best lr")
     grid_list = []
     for lr in [0.0005, 0.0008, 0.001]:
