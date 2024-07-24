@@ -98,7 +98,7 @@ model = SimpleCNN(input_dim=3, output_nodes=1)
 
 This repository contains code for the training process of the simple CNN model. 
 
-## Outline
+### Outline
 1. [Training and Evaluation Loop](#training-and-evaluation-loop)
 2. [Plotting Learning Curves with Matplotlib and TensorBoard](#plot-learning-curves)
 3. [Save the best model from .pt to .jit](#save-the-best-model)
