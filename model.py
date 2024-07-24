@@ -5,37 +5,40 @@ from config import config
 
 # Custom Simple CNN model 
 class SimpleCNN(nn.Module):
-    def __init__(self, input_dim, output_nodes):
+    def __init__(self, input_dim, output_nodes, model_name='simple_cnn'):
         super(SimpleCNN, self).__init__()
 
         self.input_dim = input_dim
         self.output_nodes = output_nodes
 
-        self.model = nn.Sequential(
-            # 1st Convolutional Block
-            nn.Conv2d(input_dim, 32, kernel_size=3, stride=1, padding=1),
-            nn.ReLU(inplace=True),
-            nn.MaxPool2d(kernel_size=2, stride=2),
-            # 2nd Convolutional Block
-            nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1),
-            nn.ReLU(inplace=True),
-            nn.MaxPool2d(kernel_size=2, stride=2),
-            # 3rd Convolutional Block
-            nn.Conv2d(64, 128, kernel_size=3, stride=1, padding=1),
-            nn.ReLU(inplace=True),
-            nn.MaxPool2d(kernel_size=2, stride=2),
-            # 4th Convolutional Block
-            nn.Conv2d(128, 256, kernel_size=3, stride=1, padding=1),
-            nn.ReLU(inplace=True),
-            nn.MaxPool2d(kernel_size=2, stride=2),
-            # Flatten
-            nn.Flatten(),
-            # 1st Fully Connected Layer
-            nn.Linear(256 * (config['img_size'] // 16) * (config['img_size'] // 16), 512),
-            nn.ReLU(inplace=True),
-            # 2nd Fully Connected Layer
-            nn.Linear(512, output_nodes),
-        )
+        if model_name == 'simple_cnn':
+            self.model = nn.Sequential(
+                # 1st Convolutional Block
+                nn.Conv2d(input_dim, 32, kernel_size=3, stride=1, padding=1),
+                nn.ReLU(inplace=True),
+                nn.MaxPool2d(kernel_size=2, stride=2),
+                # 2nd Convolutional Block
+                nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1),
+                nn.ReLU(inplace=True),
+                nn.MaxPool2d(kernel_size=2, stride=2),
+                # 3rd Convolutional Block
+                nn.Conv2d(64, 128, kernel_size=3, stride=1, padding=1),
+                nn.ReLU(inplace=True),
+                nn.MaxPool2d(kernel_size=2, stride=2),
+                # 4th Convolutional Block
+                nn.Conv2d(128, 256, kernel_size=3, stride=1, padding=1),
+                nn.ReLU(inplace=True),
+                nn.MaxPool2d(kernel_size=2, stride=2),
+                # Flatten
+                nn.Flatten(),
+                # 1st Fully Connected Layer
+                nn.Linear(256 * (config['img_size'] // 16) * (config['img_size'] // 16), 512),
+                nn.ReLU(inplace=True),
+                # 2nd Fully Connected Layer
+                nn.Linear(512, output_nodes),
+            )
+        else:
+            raise ValueError(f"Unsupported model name: {model_name}!")
 
     def forward(self, x):
         return self.model(x)

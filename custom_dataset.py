@@ -5,6 +5,7 @@ from PIL import Image
 from sklearn.model_selection import train_test_split
 import os
 import pandas as pd
+import numpy as np
 import cv2
 
 from config import config
@@ -34,6 +35,9 @@ transform = transforms.Compose([
 ])
 
 def preprocess_image(image):
+    if isinstance(image, Image.Image):
+        image = np.array(image)
+
     # Convert to OpenCV image
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     # Denoising
@@ -59,7 +63,9 @@ class CustomDataset(Dataset):
         if torch.is_tensor(idx):
             idx = idx.tolist()
 
-        img_dir = os.path.join(self.root_dir, self.data.iloc[idx, 1], self.data.iloc[idx, 0])
+        age_dir_name = str(self.data.iloc[idx, 1])
+        img_file_name = str(self.data.iloc[idx, 0])
+        img_dir = os.path.join(self.root_dir, age_dir_name, img_file_name)
         image = Image.open(img_dir).convert('RGB')  
         image = preprocess_image(image)
         image = self.transform(image)
@@ -90,3 +96,7 @@ if __name__ == "__main__":
     print("Number of batches in train loader:", len(train_loader))
     print("Number of batches in validation loader:", len(valid_loader))
     print("Number of batches in test loader:", len(test_loader))
+
+    # Testing the data loader
+    batch_train = next(iter(train_loader))
+    print(f"img shape: {batch_train[0].shape}, age shape: {batch_train[1].shape}")
