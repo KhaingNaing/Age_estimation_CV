@@ -99,11 +99,33 @@ model = SimpleCNN(input_dim=3, output_nodes=1)
 This repository contains code for the training process of the simple CNN model. 
 
 ### Outline
-1. [Training and Evaluation Loop](#training-and-evaluation-loop)
-2. [Plotting Learning Curves with Matplotlib and TensorBoard](#plot-learning-curves)
-3. [Save the best model from .pt to .jit](#save-the-best-model)
+1. [Finding Hyperparameters](#finding-hyperparameters)
+2. [Training and Evaluation Loop](#training-and-evaluation-loop)
+3. [Plotting Learning Curves with Matplotlib and TensorBoard](#plot-learning-curves)
+4. [Save the best model from .pt to .jit](#save-the-best-model)
 
----
+#### Finding Hyperparameters
+
+The code is located in `hyperparameter_tunning.y`.
+<details>
+  <summary><b>This process involves several steps.</b>
+</summary><br/>
+
+1. **Train and Overfit the Model on a Small Subset**:
+   - Train the model on a small subset of the dataset to assess its ability to learn and identify potential issues with overfitting.
+
+2. **Experiment with Learning Rates:**
+   - Train the model for a few epochs using various learning rates to identify the optimal learning rate for effective training.
+
+3. **Optimize Hyperparameters with Weight Decay:**
+   - Create a small grid search using different values of weight decay and the best learning rates identified in Step 2. Save the results to a CSV file for further analysis. This allows us to examine how weight decay affects the model’s performance.
+
+4. **Train the Model with Optimal Hyperparameters:**
+   - Train the model for a longer duration using the best hyperparameters obtained from Step 3 to achieve the best possible performance.
+
+</details>
+
+
 
 #### Training and Evaluation Loop
 
@@ -111,7 +133,6 @@ Training code is located in `train.py` and `functions.py`.
 
 - **Training Loop**: Handles the training process, including forward and backward pass, updating model parameters, and monitoring training metrics.
 - **Evaluation Loop**: Evaluates the model on a separate validation set and computes relevant evaluation metrics.
-
 
 #### Plot Learning Curves
 
