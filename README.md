@@ -99,9 +99,9 @@ model = SimpleCNN(input_dim=3, output_nodes=1)
 This repository contains code for the training process of the simple CNN model. 
 
 ## Outline
-1. [Training and Evaluation Loop](#train-and-evaluate)
+1. [Training and Evaluation Loop](#training-and-evaluation-loop)
 2. [Plotting Learning Curves with Matplotlib and TensorBoard](#plot-learning-curves)
-3. [Save the best model from .pt to .jit](#Save-the-best-model-from-.pt-to-.jit)
+3. [Save the best model from .pt to .jit](#save-the-best-model)
 
 ---
 
@@ -113,9 +113,9 @@ Training code is located in `train.py` and `functions.py`.
 - **Evaluation Loop**: Evaluates the model on a separate validation set and computes relevant evaluation metrics.
 
 
-#### Plotting Learning Curves with Matplotlib and TensorBoard
+#### Plot Learning Curves
 
-#### Save best model 
+#### Save The Best Model
 
 ### Improvement 
 ResNet and regression are combined to create a powerful model to solve age estimation from facial images. [Residual Network(ResNet)](https://huggingface.co/docs/transformers/en/model_doc/resnet) is a deep learning model designed to help deep neural networks learn effectively and improve accuracy across various computer vision tasks. By utilizing ResNet, we can effectively capture intricate patterns and features in images, which is crucial for precise age estimation. The regression part of the model predicts the numerical age based on the features extracted by ResNet. This approach leverages the strengths of ResNet with regression to create a robust age estimation model capable of handling complex variations.
