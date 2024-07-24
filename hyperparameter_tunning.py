@@ -10,26 +10,17 @@ from model import SimpleCNN
 from custom_dataset import train_set, train_loader
 from functions import train_one_epoch
 
-# Define model
-model = SimpleCNN(input_dim=3, output_nodes=1).to(config["device"])
-# Adam Optimizer for faster convergence
-optimizer = optim.Adam(model.parameters(), lr=0.001)
-# Mean absolute error loss function for regression
-loss_fn = nn.L1Loss() 
-# Mean absolute error metric for evaluation      
-metric = torchmetrics.MeanAbsoluteError().to(config["device"])
-
 # Find the best hyperparameters
 
 ## Calculate the loss for an untrained model
-def calculate_untrain_loss():
+def calculate_untrain_loss(model, train_loader, loss_fn):
     x_batch, y_batch = next(iter(train_loader))
     y_pred = model(x_batch.to(config["device"]))
     loss = loss_fn(y_pred, y_batch.to(config["device"]))
     print(f"Loss for an untrained model: {loss}")
 
 ## 1. Try to train and overfit the model on a small subset of dataset (1000 samples)
-def calculate_small_train_loss(num_epochs=20):
+def calculate_small_train_loss(model, train_set, loss_fn, optimizer, num_epochs=20):
     large_data, small_data = random_split(train_set, [len(train_set)-1000, 1000])
     small_train_loader = DataLoader(small_data, batch_size=5)
     print(f"1. Train on a small dataset of {len(small_data)} samples")
@@ -84,8 +75,17 @@ def find_best_lr_wd_pair(num_epochs=30):
 
 
 if __name__ == "__main__":
-    calculate_untrain_loss()
-    calculate_small_train_loss()
+    # Define model
+    model = SimpleCNN(input_dim=3, output_nodes=1).to(config["device"])
+    # Adam Optimizer for faster convergence
+    optimizer = optim.Adam(model.parameters(), lr=0.001)
+    # Mean absolute error loss function for regression
+    loss_fn = nn.L1Loss() 
+    # Mean absolute error metric for evaluation      
+    metric = torchmetrics.MeanAbsoluteError().to(config["device"])
+
+    calculate_untrain_loss(model, train_loader, loss_fn)
+    calculate_small_train_loss(model, train_set, loss_fn, optimizer)
     find_best_lr()
     grid_list = find_best_lr_wd_pair()
 

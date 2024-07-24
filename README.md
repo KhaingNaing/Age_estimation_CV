@@ -74,16 +74,16 @@ I implemented a simple CNN with regression component.
 <details>
   <summary><b>Summary of Dimensions</b></summary><br/>
 
-  1. Input: $128 \times 128 \times 3$
-  2. After 1st Conv + Pool: $64 \times 64 \times 32$
-  3. After 2nd Conv + Pool: $32 \times 32 \times 64$
-  4. After 3rd Conv + Pool: $16 \times 16 \times 128$
-  5. After 4th Conv + Pool: $8 \times 8 \times 256$
-  6. Flattened Size: $8 * 8 * 256$
-  7. After 1st Fully Connected: 512
-  8. After 2nd Fully Connected: 1 (we are predicting one numerical value)
-   
-Additionally ReLU Activation is used to introduce non-linearity into the model. This is essential for enabling the model to learn complex patterns and features.
+  1. Input (RGB image): $128 \times 128 \times 3$
+  2. After 1st Conv + Pool: $64 \times 64 \times 16$
+  3. After 2nd Conv + Pool: $32 \times 32 \times 32$
+  4. After 3rd Conv + Pool: $16 \times 16 \times 64$
+  5. After 4th Conv + Pool: $8 \times 8 \times 128$
+  6. Flattened Size: $8 * 8 * 128$
+  7. After 1st Fully Connected: $64$
+  8. After 2nd Fully Connected: $1$ (we are predicting one numerical value)
+
+The number of filters in the convolutional layers and the number of hidden nodes in the fully connected layers have been selected to keep the total number of parameters under 1 million. ReLU activation functions are used to introduce non-linearity into the model, which is crucial for enabling the network to learn complex patterns and features.
 
 Define SimpleCNN:
 ```python
@@ -98,7 +98,7 @@ model = SimpleCNN(input_dim=3, output_nodes=1)
 
 This repository contains code for the training process of the simple CNN model. 
 
-### Outline
+### Contents
 1. [Finding Hyperparameters](#finding-hyperparameters)
 2. [Training and Evaluation Loop](#training-and-evaluation-loop)
 3. [Plotting Learning Curves with Matplotlib and TensorBoard](#plot-learning-curves)
@@ -106,7 +106,7 @@ This repository contains code for the training process of the simple CNN model.
 
 #### Finding Hyperparameters
 
-The code is located in `hyperparameter_tunning.y`.
+The code is located in `hyperparameter_tunning.py`.
 <details>
   <summary><b>This process involves several steps.</b>
 </summary><br/>
@@ -134,9 +134,14 @@ Training code is located in `train.py` and `functions.py`.
 - **Training Loop**: Handles the training process, including forward and backward pass, updating model parameters, and monitoring training metrics.
 - **Evaluation Loop**: Evaluates the model on a separate validation set and computes relevant evaluation metrics.
 
-#### Plot Learning Curves
+<details>
+  <summary><b>Plotting Learning Curves with Matplotlib and TensorBoard</b>
+</summary><br/>
+</details>
 
-#### Save The Best Model
+#### Inference
+The inference function is defined in `inference.py`. This function takes a pre-trained Age Estimation model, an input image and an output image path. It loads the model checkpoint, performs inference on the input image and saves the output image with the estimated age written on it.
+
 
 ### Improvement 
 ResNet and regression are combined to create a powerful model to solve age estimation from facial images. [Residual Network(ResNet)](https://huggingface.co/docs/transformers/en/model_doc/resnet) is a deep learning model designed to help deep neural networks learn effectively and improve accuracy across various computer vision tasks. By utilizing ResNet, we can effectively capture intricate patterns and features in images, which is crucial for precise age estimation. The regression part of the model predicts the numerical age based on the features extracted by ResNet. This approach leverages the strengths of ResNet with regression to create a robust age estimation model capable of handling complex variations.

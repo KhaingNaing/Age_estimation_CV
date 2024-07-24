@@ -77,10 +77,10 @@ for epoch in range(config["epochs"]):
         # torch.save(model.state_dict(), before_model_path)
         # save full checkpoint
         torch.save({
-            'epoch': epoch,
-            'model_state_dict': model.state_dict(),
-            'optimizer_state_dict': optimizer.state_dict(),
-            'loss': best_loss,
+            "epoch": epoch,
+            "model_state_dict": model.state_dict(),
+            "optimizer_state_dict": optimizer.state_dict(),
+            "loss": best_loss,
         }, before_model_path)
         print(f"\nModel saved in epoch: {epoch}, Model saved at {before_model_path}")
 
@@ -97,10 +97,10 @@ train_metric_history_cpu = train_metric_history.cpu().numpy()
 valid_metric_history_cpu = valid_metric_history.cpu().numpy()
 # Plot learning curve
 plt.figure(figsize=(10, 7))
-plt.plot(range(config['epochs']), train_loss_history, "o-r", label="Train Loss")
-plt.plot(range(config['epochs']), valid_loss_history, "^g", label="Valid Loss")
-plt.plot(range(config['epochs']), train_metric_history, "s-b",label="Train Metric")
-plt.plot(range(config['epochs']), valid_metric_history, "D--b", label="Valid Metric")
+plt.plot(range(config["epochs"]), train_loss_history, "o-r", label="Train Loss")
+plt.plot(range(config["epochs"]), valid_loss_history, "^g", label="Valid Loss")
+plt.plot(range(config["epochs"]), train_metric_history, "s-b",label="Train Metric")
+plt.plot(range(config["epochs"]), valid_metric_history, "D--b", label="Valid Metric")
 plt.xlabel("Epochs")
 plt.ylabel("Loss/Metric")
 plt.grid(True)

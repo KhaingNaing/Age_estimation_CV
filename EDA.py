@@ -44,6 +44,6 @@ if __name__ == "__main__":
 
     for file in ["train_set.csv", "valid_set.csv", "test_set.csv"]:
         df = pd.read_csv(f"{csv_path}/{file}")
-        plot_age_distribution(df, f"{fig_save_path}/{file.split('.')[0]}_age_distribution.png")
+        plot_age_distribution(df, f"{fig_save_path}/{file.split(".")[0]}_age_distribution.png")
 
 

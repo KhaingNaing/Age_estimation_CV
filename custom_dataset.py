@@ -14,8 +14,8 @@ from config import config
 df = pd.read_csv("/home/norakami/age-prediction/csv_dataset/age_dataset.csv")
 
 # 80% train, 10% validation, 10% test
-df_train, df_temp = train_test_split(df, train_size=0.8, stratify=df.age, random_state=config['seed'])
-df_test, df_valid = train_test_split(df_temp, train_size=0.5, stratify=df_temp.age, random_state=config['seed']) 
+df_train, df_temp = train_test_split(df, train_size=0.8, stratify=df.age, random_state=config["seed"])
+df_test, df_valid = train_test_split(df_temp, train_size=0.5, stratify=df_temp.age, random_state=config["seed"]) 
 
 directory = "./csv_dataset"
 if not os.path.exists(directory):
@@ -29,9 +29,9 @@ print("All datasets have been saved successfully!")
 
 # Define transformations
 transform = transforms.Compose([
-    transforms.Resize((config['img_size'], config['img_size'])),
+    transforms.Resize((config["img_size"], config["img_size"])),
     transforms.ToTensor(),
-    transforms.Normalize(mean=config['mean'], std=config['std'])
+    transforms.Normalize(mean=config["mean"], std=config["std"])
 ])
 
 def preprocess_image(image):
@@ -66,7 +66,7 @@ class CustomDataset(Dataset):
         age_dir_name = str(self.data.iloc[idx, 1])
         img_file_name = str(self.data.iloc[idx, 0])
         img_dir = os.path.join(self.root_dir, age_dir_name, img_file_name)
-        image = Image.open(img_dir).convert('RGB')  
+        image = Image.open(img_dir).convert("RGB")  
         image = preprocess_image(image)
         image = self.transform(image)
         age = torch.tensor(self.data.iloc[idx, 1], dtype=torch.float32)
@@ -83,9 +83,9 @@ train_set = CustomDataset(root_dir, train_csv, transform)
 valid_set = CustomDataset(root_dir, valid_csv, transform)
 test_set = CustomDataset(root_dir, test_csv, transform)
 
-train_loader = DataLoader(train_set, batch_size=config['batch_size'], shuffle=True)
-valid_loader = DataLoader(valid_set, batch_size=config['batch_size'])
-test_loader = DataLoader(test_set, batch_size=config['batch_size'])
+train_loader = DataLoader(train_set, batch_size=config["batch_size"], shuffle=True)
+valid_loader = DataLoader(valid_set, batch_size=config["batch_size"])
+test_loader = DataLoader(test_set, batch_size=config["batch_size"])
 
 print("Data loaders have been created successfully!")
 

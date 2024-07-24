@@ -9,7 +9,7 @@ def get_all_files(dataset_path):
         folder_path = os.path.join(dataset_path, age)
         if os.path.isdir(folder_path):
             folder_files = os.listdir(folder_path)
-            folder_files = [file for file in folder_files if file and not file.startswith('.')]
+            folder_files = [file for file in folder_files if file and not file.startswith(".")]
 
             for file_name in folder_files:
                 file_details.append((file_name, age))
