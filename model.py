@@ -75,7 +75,7 @@ def total_params(model):
     
 
 if __name__ == "__main__":
-    model = SimpleCNN(input_dim=3, output_nodes=1).to(config["device"])
+    model = SimpleCNN(input_dim=3, output_nodes=1, model_name="large_cnn").to(config["device"])
     total_parameters = total_params(model)
 
     print(f"Total number of parameters: {total_parameters}")

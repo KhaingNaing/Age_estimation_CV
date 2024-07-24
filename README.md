@@ -87,7 +87,7 @@ The number of filters in the convolutional layers and the number of hidden nodes
 
 Define SimpleCNN:
 ```python
-model = SimpleCNN(input_dim=3, output_nodes=1)
+model = SimpleCNN(input_dim=3, output_nodes=1, model_name="simple_cnn")
 ```
 </details>
 
@@ -102,7 +102,7 @@ This repository contains code for the training process of the simple CNN model.
 1. [Finding Hyperparameters](#finding-hyperparameters)
 2. [Training and Evaluation Loop](#training-and-evaluation-loop)
 3. [Plotting Learning Curves with Matplotlib and TensorBoard](#plot-learning-curves)
-4. [Save the best model from .pt to .jit](#save-the-best-model)
+4. [Save the best model checkpoint as .pth file](#save-the-best-model)
 
 #### Finding Hyperparameters
 
@@ -137,10 +137,23 @@ Training code is located in `train.py` and `functions.py`.
 <details>
   <summary><b>Plotting Learning Curves with Matplotlib and TensorBoard</b>
 </summary><br/>
+
+Large CNN (lastest checkpoint): $parameters = 8778049, epoch = 19, loss = 6.06$
+
+![alt-text](figs/large_cnn_loss.png)
+
 </details>
 
 #### Inference
 The inference function is defined in `inference.py`. This function takes a pre-trained Age Estimation model, an input image and an output image path. It loads the model checkpoint, performs inference on the input image and saves the output image with the estimated age written on it.
+
+<details>
+  <summary><b>Inference Pipeline</b>
+</summary><br/>
+
+![alt-text](pics/Inference-pipeline.png)
+
+</details>
 
 
 ### Improvement 

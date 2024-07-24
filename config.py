@@ -22,7 +22,7 @@ config = {
     "image_path": "/home/norakami/age-prediction/img_test/img-35.jpg",
     "output_path": "/home/norakami/age-prediction/img_test/output.png",
     "leaky_relu": False,
-    "epochs": 20,
+    "epochs": 30,
     "batch_size": 64,
     "eval_batch_size": 128,
     "seed": 42,
