@@ -180,6 +180,13 @@ The inference function is defined in `inference.py`. This function takes a pre-t
 
 ### Future Improvement 
 <details>
+  <summary><b>Hyperparameter tunning</b></summary><br />
+
+In the current hyperparameter tuning experiment, the learning rate and regularization parameters were selected with a focus on achieving faster convergence due to time constraints. Future improvements will involve more extensive experimentation with different learning rates, various batch sizes, and additional regularization techniques to better prevent overfitting and optimize performance.
+
+</details>
+
+<details>
   <summary><b>Model</b></summary><br />
 
 To enhance model's capability in capturing complex facial features we can implement very deep architectures, such as [Residual Network(ResNet)](https://huggingface.co/docs/transformers/en/model_doc/resnet). By utilizing deeper models, we can enhance the model's ability in capturing intricate patterns in facial images, leading to more accurate predictions.
