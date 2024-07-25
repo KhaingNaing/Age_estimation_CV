@@ -216,12 +216,12 @@ Experiment with advanced loss functions tailored to regression tasks, which migh
     - ```conda activate myenv```
   3. Prepare the dataset: \
     - Download dataset [here](https://drive.google.com/file/d/1uNA2JzKTtTaGIWtrHsrBUAg2k3eoDZHA/view?usp=drive_link)
-  4. Download the model checkpoint [here](https://drive.google.com/drive/folders/1ry4J5J92-vL4W4S8MVVjzhYbbZDHUc5x?usp=sharing)
+  4. Download the model checkpoint [here](https://drive.google.com/drive/folders/1ry4J5J92-vL4W4S8MVVjzhYbbZDHUc5x?usp=sharing) and place in `checkpoint/` directory
   5. Adjust the configuration: \
     - Edit ```config.py``` to set the dataset path and configure other features as needed. 
   6. To train the simple_cnn model: \
     - ```python3 train.py```
-  7. To perform inference with the best model checkpoint in ```checkpoints/``` directory: \
+  7. To perform inference with the best model checkpoint: \
     - ```python3 inference.py```
 
 
