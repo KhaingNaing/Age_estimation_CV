@@ -161,7 +161,7 @@ Training code is located in `train.py` and `functions.py`.
 </summary><br/>
 
 Simple CNN (best model checkpoint): parameters = `621857`, epoch = `23`, valid_loss = `6.09`
-77
+
 ![alt-text](figs/simple_cnn_loss.png)
 
 From the model's learning curve, we observe that after epoch 23 while the training loss continues to decrease, the validation loss starts to increase. This suggests that the model may be overfitting. Potential causes for this overfitting could include the learning rate, data quality, batch size, or the choice of loss function, among other factors.
