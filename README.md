@@ -42,7 +42,7 @@ In the age distribution analysis, the dataset is imbalanced. To address this, it
 <details>
   <summary><b>Stratified Sampling</b></summary><br/>
 
-Stratified sampling works by dividing the dataset into groups based on the stratification feature (in our case, age). This approach ensures that each group is represented proportionally, which helps address imbalances in the dataset and improves the quality of the analysis. I use $80:10:10$ split for train vs valid vs test sets. The data summary is as below: \
+Stratified sampling works by dividing the dataset into groups based on the stratification feature (in our case, age). This approach ensures that each group is represented proportionally, which helps address imbalances in the dataset and improves the quality of the analysis. I use $80:10:10$ split for train vs valid vs test sets. The data summary is as below:
 
 Train set size: $23976$ \
 Validation set size: $2997$ \
@@ -213,19 +213,18 @@ Experiment with advanced loss functions tailored to regression tasks, which migh
 </details>
 
 # Steps to Run the Code:
-  1. Create a conda env with python 3.8 via:\
-    - ```conda create --name age_estimation python=3.8```
+  1. Create a conda env with environment file provided via:\
+    - ```conda env create -f environment.yml```
   2. Activate conda env:\
-    - ```conda activate age_estimation```
-  3. Make sure to install all the requirements: \
-    - ```conda install --file requirements.txt```
-  4. Prepare the dataset: \
+    - ```conda activate myenv```
+  3. Prepare the dataset: \
     - Download dataset [here](https://drive.google.com/file/d/1uNA2JzKTtTaGIWtrHsrBUAg2k3eoDZHA/view?usp=drive_link)
+  4. Download the model checkpoint [here](https://drive.google.com/drive/folders/1ry4J5J92-vL4W4S8MVVjzhYbbZDHUc5x?usp=sharing)
   5. Adjust the configuration: \
     - Edit ```config.py``` to set the dataset path and configure other features as needed. 
-  6. Train the simple_cnn model: \
+  6. To train the simple_cnn model: \
     - ```python3 train.py```
-  7. Perform inference with the best model checkpoint in ```checkpoints/``` directory: \
+  7. To perform inference with the best model checkpoint in ```checkpoints/``` directory: \
     - ```python3 inference.py```
 
 
