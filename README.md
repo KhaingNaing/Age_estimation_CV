@@ -136,7 +136,7 @@ The code is located in `hyperparameter_tunning.py`.
   <summary><b>3. Optimize Hyperparameters with Weight Decay</b>
 </summary><br/>
 
-- Create a small grid search using different values of weight decay and the best learning rates identified in Step 2. Save the results to a CSV file for further analysis. This allows us to examine how weight decay affects the model’s performance.
+- Create a small grid search using different values of weight decay and the best learning rates identified in Step 2. This allows us to examine how weight decay affects the model’s performance.
 - I tested the model with weight decay values `0.001`, `0.0001` and `0.00001` on the full data with 30 epochs.
 
 </details>
