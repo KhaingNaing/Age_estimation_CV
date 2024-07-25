@@ -123,6 +123,7 @@ The code is located in `hyperparameter_tunning.py`.
 
 - Train the model for a few epochs using different learning rates to identify the optimal learning rate for effective training.
 - I tested learning rates of $0.001$, $0.0001$, and $0.0005$ on the full data with 20 epochs. $0.001$ and $0.0005$ achieved the best loss, but $0.001$ was selected for its faster convergence.
+
 $$
 \text{Learning Rate} = 0.001 \text{, Epoch} = 20 \text{, Final Loss} = 6.09884
 $$

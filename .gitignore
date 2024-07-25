@@ -131,6 +131,8 @@ env.bak/
 venv.bak/
 dataset/
 __MACOSX/
+old_logs/
+logs/*
 
 # Spyder project settings
 .spyderproject
