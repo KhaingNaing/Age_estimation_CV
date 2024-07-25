@@ -101,7 +101,7 @@ This repository contains code for the training process of the simple CNN model.
 ### Contents
 1. [Finding Hyperparameters](#finding-hyperparameters)
 2. [Training and Evaluation Loop](#training-and-evaluation-loop)
-3. [Plotting Learning Curves with Matplotlib and TensorBoard](#plotting-learning-curves)
+3. [Plotting Learning Curves with TensorBoard](#plotting-learning-curves)
 4. [Save the best model checkpoint as .pth file](#save-the-best-model)
 
 #### Finding Hyperparameters
@@ -160,7 +160,13 @@ Training code is located in `train.py` and `functions.py`.
   <summary><b>Plotting Learning Curves</b>
 </summary><br/>
 
-Large CNN (lastest checkpoint): parameters = `8778049`, epoch = `19`, loss = `6.06`
+Simple CNN (best model checkpoint): parameters = `621857`, epoch = `23`, valid_loss = `6.09`
+77
+![alt-text](figs/simple_cnn_loss.png)
+
+From the model's learning curve, we observe that after epoch 23 while the training loss continues to decrease, the validation loss starts to increase. This suggests that the model may be overfitting. Potential causes for this overfitting could include the learning rate, data quality, batch size, or the choice of loss function, among other factors.
+
+Large CNN (best model checkpoint): parameters = `8778049`, epoch = `19`, valid_loss = `6.06`
 
 ![alt-text](figs/large_cnn_loss.png)
 

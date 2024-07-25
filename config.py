@@ -22,7 +22,7 @@ config = {
 
     # Paths for inference result
     "image_path": "/home/norakami/age-prediction/img_test/img-35.jpg",
-    "output_path": "/home/norakami/age-prediction/img_test/output.png",
+    "output_path": "/home/norakami/age-prediction/img_test/output-simple_cnn.png",
 
     # Training parameters
     "epochs": 30,

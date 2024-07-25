@@ -91,21 +91,21 @@ for epoch in range(config["epochs"]):
     # Close Tensorboard writer
     writer.close()
 
-train_loss_history_cpu = train_loss_history.cpu().numpy()
-valid_loss_history_cpu = valid_loss_history.cpu().numpy()
-train_metric_history_cpu = train_metric_history.cpu().numpy()
-valid_metric_history_cpu = valid_metric_history.cpu().numpy()
-# Plot learning curve
-plt.figure(figsize=(10, 7))
-plt.plot(range(config["epochs"]), train_loss_history, "o-r", label="Train Loss")
-plt.plot(range(config["epochs"]), valid_loss_history, "^g", label="Valid Loss")
-plt.plot(range(config["epochs"]), train_metric_history, "s-b",label="Train Metric")
-plt.plot(range(config["epochs"]), valid_metric_history, "D--b", label="Valid Metric")
-plt.xlabel("Epochs")
-plt.ylabel("Loss/Metric")
-plt.grid(True)
-plt.legend()
-plt.savefig("figs/metric_plot.png")
+# train_loss_history_cpu = train_loss_history.cpu().numpy()
+# valid_loss_history_cpu = valid_loss_history.cpu().numpy()
+# train_metric_history_cpu = train_metric_history.cpu().numpy()
+# valid_metric_history_cpu = valid_metric_history.cpu().numpy()
+# # Plot learning curve
+# plt.figure(figsize=(10, 7))
+# plt.plot(range(config["epochs"]), train_loss_history, "o-r", label="Train Loss")
+# plt.plot(range(config["epochs"]), valid_loss_history, "^g", label="Valid Loss")
+# plt.plot(range(config["epochs"]), train_metric_history, "s-b",label="Train Metric")
+# plt.plot(range(config["epochs"]), valid_metric_history, "D--b", label="Valid Metric")
+# plt.xlabel("Epochs")
+# plt.ylabel("Loss/Metric")
+# plt.grid(True)
+# plt.legend()
+# plt.savefig("figs/metric_plot.png")
 
     
 

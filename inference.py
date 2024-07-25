@@ -4,6 +4,8 @@ from PIL import Image, ImageDraw, ImageFont
 import torchvision.transforms as transforms
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 import glob
+from torch import nn
+import numpy as np
 
 from config import config
 from model import SimpleCNN
@@ -49,6 +51,12 @@ def model_accuracy(model, test_loader, loss_fn):
             total_loss += loss_fn(outputs, labels).item()
             all_predictions.append(outputs.cpu().numpy())
             all_labels.append(labels.cpu().numpy())
+        all_labels = np.array(all_labels).flatten()
+        all_predictions = np.array(all_predictions).flatten()
+        print(type(all_labels), all_labels.shape)
+        print(type(all_predictions), all_predictions.shape)
+        print(all_labels[:5])  # Check first few elements
+        print(all_predictions[:5])  # Check first few elements
 
         mae = mean_absolute_error(all_labels, all_predictions)
         mse = mean_squared_error(all_labels, all_predictions)
@@ -68,7 +76,8 @@ if __name__ == "__main__":
 
     # for testing model accuracy 
     ## prepare test data
-    test_loss, mae, mse = model_accuracy(model, test_loader)
+    loss_fn = nn.L1Loss() 
+    test_loss, mae, mse = model_accuracy(model, test_loader, loss_fn)
     print(f"Test Loss: {test_loss},\n Test MAE: {mae},\n Test MSE: {mse}")
 
     # for inference one image at a time
