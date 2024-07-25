@@ -32,7 +32,6 @@ def calculate_small_train_loss(model, train_set, loss_fn, optimizer, num_epochs=
                                             loss_fn, 
                                             metric)
         print(f"    Epoch {epoch+1}, Loss: {train_loss}, Metric: {train_metric}")
-    # [final_loss] Epoch 20, Loss: 6.098835245768229, Metric: 6.098839282989502
 
 ## 2. Train the model for a few epochs on the full dataset (experiemtn with different hyperparameters)
 def find_best_lr(num_epochs=20):
@@ -51,6 +50,9 @@ def find_best_lr(num_epochs=20):
                                                 metric)
             print(f"    Epoch {epoch+1}, Loss: {train_loss}, Metric: {train_metric}")
         print("\n")
+    # [lr = 0.001 final_loss] Epoch 20, Loss: 6.09884, Metric: 6.09884
+    # [lr = 0.0001 final_loss] Epoch 20, Loss: 6.28435, Metric: 6.28435
+    # [lr = 0.0005 final_loss] Epoch 20, Loss: 6.01858, Metric: 6.01858
 
 ## 3. Create a grid using weight decay and the best lr 
 def find_best_lr_wd_pair(num_epochs=30):
