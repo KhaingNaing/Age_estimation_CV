@@ -101,31 +101,56 @@ This repository contains code for the training process of the simple CNN model.
 ### Contents
 1. [Finding Hyperparameters](#finding-hyperparameters)
 2. [Training and Evaluation Loop](#training-and-evaluation-loop)
-3. [Plotting Learning Curves with Matplotlib and TensorBoard](#plot-learning-curves)
+3. [Plotting Learning Curves with Matplotlib and TensorBoard](#plotting-learning-curves)
 4. [Save the best model checkpoint as .pth file](#save-the-best-model)
 
 #### Finding Hyperparameters
 
 The code is located in `hyperparameter_tunning.py`.
+
+**This process involves several steps:**
+
 <details>
-  <summary><b>This process involves several steps.</b>
+  <summary><b>1. Train and Overfit the Model on a Small Subset</b>
 </summary><br/>
 
-1. **Train and Overfit the Model on a Small Subset**:
    - Train the model on a small subset of the dataset to assess its ability to learn and identify potential issues with overfitting.
+</details>
 
-2. **Experiment with Learning Rates:**
-   - Train the model for a few epochs using various learning rates to identify the optimal learning rate for effective training.
+<details>
+  <summary><b>2. Experiment with Learning Rates</b>
+</summary><br/>
 
-3. **Optimize Hyperparameters with Weight Decay:**
-   - Create a small grid search using different values of weight decay and the best learning rates identified in Step 2. Save the results to a CSV file for further analysis. This allows us to examine how weight decay affects the model’s performance.
-
-4. **Train the Model with Optimal Hyperparameters:**
-   - Train the model for a longer duration using the best hyperparameters obtained from Step 3 to achieve the best possible performance.
+- Train the model for a few epochs using different learning rates to identify the optimal learning rate for effective training.
+- I tested learning rates of $0.001$, $0.0001$, and $0.0005$ on the full data with 20 epochs. $0.001$ and $0.0005$ achieved the best loss, but $0.001$ was selected for its faster convergence.
+$$
+\text{Learning Rate} = 0.001 \text{, Epoch} = 20 \text{, Final Loss} = 6.09884
+$$
+$$
+\text{Learning Rate} = 0.0001 \text{, Epoch} = 20 \text{, Final Loss} = 6.28435
+$$
+$$
+\text{Learning Rate} = 0.0005 \text{, Epoch} = 20 \text{, Final Loss} = 6.01858
+$$
 
 </details>
 
+<details>
+  <summary><b>3. Optimize Hyperparameters with Weight Decay</b>
+</summary><br/>
 
+- Create a small grid search using different values of weight decay and the best learning rates identified in Step 2. Save the results to a CSV file for further analysis. This allows us to examine how weight decay affects the model’s performance.
+- I tested the model with weight decay values $0.001$, $0.0001$ and $0.00001$ on the full data with 30 epochs.
+
+</details>
+
+<details>
+  <summary><b>4. Train the Model with Optimal Hyperparameters</b>
+</summary><br/>
+
+- Train the model for an extended period using the best hyperparameters obtained from Step 3 to achieve optimal performance.
+- Based on my experiments, lr of $0.001$ and wd of $0.0001$ have been selected for model training.
+</details>
 
 #### Training and Evaluation Loop
 
@@ -135,10 +160,10 @@ Training code is located in `train.py` and `functions.py`.
 - **Evaluation Loop**: Evaluates the model on a separate validation set and computes relevant evaluation metrics.
 
 <details>
-  <summary><b>Plotting Learning Curves with Matplotlib and TensorBoard</b>
+  <summary><b>Plotting Learning Curves</b>
 </summary><br/>
 
-Large CNN (lastest checkpoint): $parameters = 8778049, epoch = 19, loss = 6.06$
+Large CNN (lastest checkpoint): parameters = $8778049$, epoch = $19$, loss = $6.06$
 
 ![alt-text](figs/large_cnn_loss.png)
 

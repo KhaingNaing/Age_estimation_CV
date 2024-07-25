@@ -33,8 +33,8 @@ config = {
     "seed": 42,
 
     # Optimization parameters
-    "lr": 0.0001, # Learning rate
-    "wd": 0.001,  # Weight decay
+    "lr": 0.001, # Learning rate
+    "wd": 0.0001,  # Weight decay
 
     # Checkpoint and logging configuration
     "save_interval": 1,
