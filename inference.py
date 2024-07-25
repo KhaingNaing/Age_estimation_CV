@@ -51,16 +51,18 @@ def model_accuracy(model, test_loader, loss_fn):
             total_loss += loss_fn(outputs, labels).item()
             all_predictions.append(outputs.cpu().numpy())
             all_labels.append(labels.cpu().numpy())
-        all_labels = np.array(all_labels).flatten()
-        all_predictions = np.array(all_predictions).flatten()
-        print(type(all_labels), all_labels.shape)
-        print(type(all_predictions), all_predictions.shape)
-        print(all_labels[:5])  # Check first few elements
-        print(all_predictions[:5])  # Check first few elements
+
+        # Flatten or concatenate arrays if they have consistent shapes
+        try:
+            all_labels = np.concatenate(all_labels).flatten()
+            all_predictions = np.concatenate(all_predictions).flatten()
+        except ValueError as e:
+            print(f"Error concatenating arrays: {e}")
+            return None, None, None
 
         mae = mean_absolute_error(all_labels, all_predictions)
         mse = mean_squared_error(all_labels, all_predictions)
-    return total_loss, mae, mse
+    return total_loss/len(test_loader) , mae, mse
 
 
 if __name__ == "__main__":

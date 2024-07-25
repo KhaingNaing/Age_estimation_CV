@@ -172,6 +172,24 @@ Large CNN (best model checkpoint): parameters = `8778049`, epoch = `19`, valid_l
 
 </details>
 
+<details>
+  <summary><b>Model Evaluation</b>
+</summary><br/>
+
+| Metric     | Value            |
+|------------|------------------:|
+| Test Loss  | 6.163            |
+| Test MAE   | 6.164             |
+| Test MSE   | 55.912            |
+
+- Test Loss: The test loss value represents the L1 loss (mean absolute error) on the test dataset. L1 loss measures the average absolute difference between the predicted and true age values across all test samples. Lower values are preferable as they indicate that the model's predictions are closer to the true values.
+- Test MAE (Mean Absolute Error): This metric represents the average absolute error between the predicted and actual values. It quantifies how far off the predictions are from the true values on average. In this case, the average prediction error is approximately 6.16 years.
+- Test MSE (Mean Squared Error): This metric represents the average of the squared differences between the predicted and actual values. Due to the squaring of errors, larger discrepancies are penalized more heavily. Lower values are preferable as they indicate that the model's predictions are closer to the true values.
+
+We can observe that the L1 loss and MAE values are close to each other, which is expected since L1 loss is equivalent to MAE.
+
+</details>
+
 #### Inference
 The inference function is defined in `inference.py`. This function takes a pre-trained Age Estimation model, an input image and an output image path. It loads the model checkpoint, performs inference on the input image and saves the output image with the estimated age written on it.
 
