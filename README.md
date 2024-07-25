@@ -42,11 +42,11 @@ In the age distribution analysis, the dataset is imbalanced. To address this, it
 <details>
   <summary><b>Stratified Sampling</b></summary><br/>
 
-Stratified sampling works by dividing the dataset into groups based on the stratification feature (in our case, age). This approach ensures that each group is represented proportionally, which helps address imbalances in the dataset and improves the quality of the analysis. I use $80:10:10$ split for train vs valid vs test sets. The data summary is as below:
+Stratified sampling works by dividing the dataset into groups based on the stratification feature (in our case, age). This approach ensures that each group is represented proportionally, which helps address imbalances in the dataset and improves the quality of the analysis. I use `80:10:10` split for train vs valid vs test sets. The data summary is as below:
 
-Train set size: $23976$ \
-Validation set size: $2997$ \
-Test set size: $2997$
+Train set size: `23976` \
+Validation set size: `2997` \
+Test set size: `2997`
 </details>
 
 <details>
@@ -74,14 +74,14 @@ I implemented a simple CNN with regression component.
 <details>
   <summary><b>Summary of Dimensions</b></summary><br/>
 
-  1. Input (RGB image): $128 \times 128 \times 3$
-  2. After 1st Conv + Pool: $64 \times 64 \times 16$
-  3. After 2nd Conv + Pool: $32 \times 32 \times 32$
-  4. After 3rd Conv + Pool: $16 \times 16 \times 64$
-  5. After 4th Conv + Pool: $8 \times 8 \times 128$
-  6. Flattened Size: $8 * 8 * 128$
-  7. After 1st Fully Connected: $64$
-  8. After 2nd Fully Connected: $1$ (we are predicting one numerical value)
+  1. Input (RGB image): `128 x 128 x 3`
+  2. After 1st Conv + Pool: `64 x 64 x 16`
+  3. After 2nd Conv + Pool: `32 x 32 x 32`
+  4. After 3rd Conv + Pool: `16 x 16 x 64`
+  5. After 4th Conv + Pool: `8 x 8 x 128`
+  6. Flattened Size: `8 * 8 * 128`
+  7. After 1st Fully Connected: `64`
+  8. After 2nd Fully Connected: `1` (we are predicting one numerical value)
 
 The number of filters in the convolutional layers and the number of hidden nodes in the fully connected layers have been selected to keep the total number of parameters under 1 million. ReLU activation functions are used to introduce non-linearity into the model, which is crucial for enabling the network to learn complex patterns and features.
 
@@ -122,17 +122,13 @@ The code is located in `hyperparameter_tunning.py`.
 </summary><br/>
 
 - Train the model for a few epochs using different learning rates to identify the optimal learning rate for effective training.
-- I tested learning rates of $0.001$, $0.0001$, and $0.0005$ on the full data with 20 epochs. $0.001$ and $0.0005$ achieved the best loss, but $0.001$ was selected for its faster convergence.
-
-$$
-\text{Learning Rate} = 0.001 \text{, Epoch} = 20 \text{, Final Loss} = 6.09884
-$$
-$$
-\text{Learning Rate} = 0.0001 \text{, Epoch} = 20 \text{, Final Loss} = 6.28435
-$$
-$$
-\text{Learning Rate} = 0.0005 \text{, Epoch} = 20 \text{, Final Loss} = 6.01858
-$$
+- I tested learning rates of `0.001`, `0.0001`, and `0.0005` on the full data with 20 epochs. `0.001` and `0.0005` achieved the best loss, but `0.001` was selected for its faster convergence.
+  
+  | Learning Rate | Epoch | Final Loss |
+  |---------------|-------|------------|
+  | 0.001         | 20    | 6.09884    |
+  | 0.0001        | 20    | 6.28435    |
+  | 0.0005        | 20    | 6.01858    |
 
 </details>
 
@@ -141,7 +137,7 @@ $$
 </summary><br/>
 
 - Create a small grid search using different values of weight decay and the best learning rates identified in Step 2. Save the results to a CSV file for further analysis. This allows us to examine how weight decay affects the model’s performance.
-- I tested the model with weight decay values $0.001$, $0.0001$ and $0.00001$ on the full data with 30 epochs.
+- I tested the model with weight decay values `0.001`, `0.0001` and `0.00001` on the full data with 30 epochs.
 
 </details>
 
@@ -150,7 +146,7 @@ $$
 </summary><br/>
 
 - Train the model for an extended period using the best hyperparameters obtained from Step 3 to achieve optimal performance.
-- Based on my experiments, lr of $0.001$ and wd of $0.0001$ have been selected for model training.
+- Based on my experiments, lr of `0.001` and wd of `0.0001` have been selected for model training.
 </details>
 
 #### Training and Evaluation Loop
@@ -164,7 +160,7 @@ Training code is located in `train.py` and `functions.py`.
   <summary><b>Plotting Learning Curves</b>
 </summary><br/>
 
-Large CNN (lastest checkpoint): parameters = $8778049$, epoch = $19$, loss = $6.06$
+Large CNN (lastest checkpoint): parameters = `8778049`, epoch = `19`, loss = `6.06`
 
 ![alt-text](figs/large_cnn_loss.png)
 
